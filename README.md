@@ -7,3 +7,5 @@
 ### goal is to be finished the game by June, along with a video explanation.
 
 ### I will use Pygame to complete the project
+
+# Above was my orginal idea, however it has now changed to a visual text-based adventrue game
