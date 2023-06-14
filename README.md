@@ -8,4 +8,4 @@
 
 ### I will use Pygame to complete the project
 
-# Above was my orginal idea, however it has now changed to a visual text-based adventrue game
+# Above was my orginal idea, however it has now changed to a visual text-based adventure game
