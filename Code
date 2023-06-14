@@ -2,19 +2,102 @@
 import pygame
 
 
-WIDTH, HEIGHT = 700, 500
+WIDTH, HEIGHT = 800, 400
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+FPS = 60
+
+
+# Game variable
+game_continue = False
+
+
+
+# TEXT
+pygame.font.init()
+textfont = pygame.font.SysFont('Comic Sans', 40)
+textfont2 = pygame.font.SysFont('arialblack', 40)
+textfont3 = pygame.font.SysFont('arialblack', 30)
+# VIDEO
+WINTER_HEIGHT, WINTER_WIDTH = 400, 300
+BACKGROUND1 = pygame.image.load('WINTER.jpg')
+BACKGROUND_1 = pygame.transform.scale(BACKGROUND1, (WINTER_HEIGHT, WINTER_WIDTH))
+
+BACKGROUND2 = pygame.image.load('BEDROOM.jpg')
+
+
+
+
+
+def draw_window():
+    # VIDEO
+    WIN.blit(BACKGROUND1, (0,0))
+    
+    
+    # TEXT
+    textTBD = textfont.render('You wake up in the cold night, to a jarring sound', 1, (255,255,255))
+    WIN.blit(textTBD, (70, 50))
+ 
+    textTBD = textfont2.render('Press SPACE to continue', 1, (255,255,255))
+    WIN.blit(textTBD, (240, 300))
+
+    
+    pygame.display.update()
+
+
+
+
+
+
 
 def main():
+    clock = pygame.time.Clock()
     run = True
+    game_continue = False
+    game_continue1 = False
+    game_continue2 = False
     while run:
+        if game_continue == True:
+            WIN.blit(BACKGROUND2, (0,0))
+            textTBD = textfont3.render('You lay there awake hoping the sounds would go away, but they dont...', 1, (255,0,0))
+            WIN.blit(textTBD, (60, 50))
+            textTBD = textfont3.render('Would like to check the sound', 1, (255,0,0))
+            WIN.blit(textTBD, (250, 200))
+            textTBD = textfont2.render('YES (press 1)                         NO(press 2)', 1, (0,255,0))
+            WIN.blit(textTBD, (140, 300))
+            
+            pygame.display.update()
+        else:
+            draw_window()
+
+        if game_continue1 == True:
+            textTBD = textfont2.render('NICE', 1, (255,255,255))
+            WIN.blit(textTBD, (240, 300))
+            pygame.display.update()
+
+        if game_continue2 == True:
+                textTBD = textfont2.render('SUPER NICE', 1, (255,255,255))
+                WIN.blit(textTBD, (240, 300))
+                pygame.display.update()
+        
+        clock.tick(FPS)
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    if event.key == pygame.K_0:
+                        game_continue1 = True
+                    elif event.key == pygame.K_2:
+                        game_continue2 = True
+                    game_continue = True
+                    
             if event.type == pygame.QUIT:
                 run = False
 
+        
+        
+        
+    
     pygame.quit()
 
 if __name__ == "__main__":
     main()
-
 ```
